@@ -23,7 +23,6 @@ class ApplicationNoIPC : public IApplication {
   std::shared_ptr<logger::ILogger> logger_;
   void Run(const std::unordered_map<std::string, Parm>& parms) override {
     logger_->Error("Application function: Run is not implemented: ");
-    this->SleepMainThred();
   }
 
   void onRun(const std::unordered_map<std::string, Parm>& parms) override {
