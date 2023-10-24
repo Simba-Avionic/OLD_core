@@ -3,14 +3,16 @@
 #include <chrono>
 #include <thread>
 
-static void BM_SomeFunction(benchmark::State& state) {
-  // Perform setup here
+#include "application/parm.h"
+
+static void ParamConvertBenchmark(benchmark::State& state) {
   for (auto _ : state) {
-    // This code gets timed
-    SomeFunction();
+    simba::core::Parm parm{"abc=123"};
+    parm.GetValue();
+    parm.GetName();
   }
 }
 // Register the function as a benchmark
-BENCHMARK(BM_SomeFunction);
+BENCHMARK(ParamConvertBenchmark);
 // Run the benchmark
 BENCHMARK_MAIN();

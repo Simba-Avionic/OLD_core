@@ -10,18 +10,3 @@ cc_library(
         "@core//logger:console_logger",
     ],
 )
-
-cc_test(
-    name = "core_test",
-    srcs = ["test/sample_test.cc"],
-    deps = ["@com_google_googletest//:gtest_main"],
-)
-
-#bazel run :benchmark
-cc_binary(
-    name = "core_benchmark",
-    srcs = ["test/benchmark/sample_benchmark.cc"],
-    deps = [
-        "@com_google_benchmark//:benchmark_main",
-    ],
-)
