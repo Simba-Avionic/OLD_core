@@ -17,6 +17,7 @@ namespace core {
 namespace logger {
 class ConsoleLogger : public ILogger {
  public:
+  ConsoleLogger();
   core::ErrorCode Debug(const std::string& log) override;
   core::ErrorCode Info(const std::string& log) override;
   core::ErrorCode Warning(const std::string& log) override;

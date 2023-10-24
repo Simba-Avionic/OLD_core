@@ -19,3 +19,11 @@ def include_spdlog():
         strip_prefix = "spdlog-1.12.0",
         urls = ["https://github.com/gabime/spdlog/archive/refs/tags/v1.12.0.zip"],
     )
+
+    http_archive(
+        name = "com_json",
+        # build_file = "@core//bazel:spdlog.BUILD",
+        # sha256 = "95651d7d1fcf2e5c3163c3d37df6d6b3e9e5027299e6bd050d157322ceda9ac9",
+        strip_prefix = "json-develop",
+        urls = ["https://github.com/nlohmann/json/archive/refs/heads/develop.zip"],
+    )

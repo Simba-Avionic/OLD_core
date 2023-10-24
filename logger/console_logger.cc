@@ -11,9 +11,13 @@
 #include "logger/console_logger.h"
 
 #include "spdlog/spdlog.h"
+
 namespace simba {
 namespace core {
 namespace logger {
+  ConsoleLogger::ConsoleLogger(){
+    spdlog::set_level(spdlog::level::debug);
+  }
 core::ErrorCode ConsoleLogger::Debug(const std::string& log) {
   spdlog::debug(log);
   return core::ErrorCode::kOk;
