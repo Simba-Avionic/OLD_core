@@ -1,11 +1,12 @@
 workspace(name="core")
 
+local_repository(
+    name="core",
+    path="."
+)
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-local_repository(
-    name = "core",
-    path = ".",
-)
 
 load("@core//bazel:third_party_repositories.bzl", "include_spdlog")
 include_spdlog()
