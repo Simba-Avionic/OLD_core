@@ -12,6 +12,7 @@
 #define CORE_APPLICATION_PARM_H_
 #include <algorithm>
 #include <string>
+#include <algorithm>
 namespace simba {
 namespace core {
 class Parm {
@@ -21,11 +22,18 @@ class Parm {
 
  public:
   Parm(const std::string raw) {
-    if (raw.find("=") != std::string::npos) {
-      name = raw.substr(0, raw.find("="));
-      value = raw.substr(raw.find("=")+1);
+    std::string rawCopy = raw;
+    rawCopy.erase(std::remove_if(rawCopy.begin(), rawCopy.end(), ::isspace), rawCopy.end());
+    if (rawCopy.find("=") != std::string::npos) {
+      if (rawCopy.substr(rawCopy.find("=")+1)[0] == '=') { 
+        name = rawCopy.substr(0, rawCopy.find("="));
+        value = rawCopy.substr(rawCopy.find("=")+2);
+      } else {
+        name = rawCopy.substr(0, rawCopy.find("="));
+        value = rawCopy.substr(rawCopy.find("=")+1);
+      }
     } else {
-      name = raw;
+      name = rawCopy;
     }
   }
   const std::string GetValue() { return value; }
