@@ -21,6 +21,7 @@ INSTANTIATE_TEST_SUITE_P(
     testing::Values(
         std::make_tuple("abc=123", "123", "abc"),
         std::make_tuple("abc = 123", "123", "abc"),
+        std::make_tuple("abc   =   123", "123", "abc"),
         std::make_tuple("abc==123", "123", "abc"),
         std::make_tuple("abc= =123", "123", "abc"),
         std::make_tuple(" abc = 123 ", "123", "abc"),
