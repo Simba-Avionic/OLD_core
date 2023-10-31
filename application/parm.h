@@ -22,19 +22,22 @@ class Parm {
 
  public:
   Parm(const std::string raw) {
+    int white_spaces_beginning = 0;
+
+    while (raw[white_spaces_beginning] == ' ') {
+      white_spaces_beginning++;
+    }
+
     if (raw.find("=") != std::string::npos) {
-      for (char c : raw.substr(0, raw.find("="))) {
-        if (!std::isspace(c)) {
-            name += c;
-        }
-      }
-      for (char c : raw.substr(raw.find("=") + 1)) {
-        if (!std::isspace(c)) {
-            value += c;
-        }
+      if (raw[raw.find("=") - 1] == ' ') {
+        name = raw.substr(white_spaces_beginning, raw.find("=") - 1 - white_spaces_beginning);
+        value = raw.substr(raw.find("=") + 2);
+      } else {
+        name = raw.substr(white_spaces_beginning, raw.find("=") - white_spaces_beginning);
+        value = raw.substr(raw.find("=") + 1);
       }
     } else {
-      name = raw;
+      name = raw.substr(white_spaces_beginning);
     }
   }
   const std::string GetValue() { return value; }
