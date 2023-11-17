@@ -19,17 +19,17 @@ namespace core {
 template <typename T>
 class Result {
  private:
-  std::unique_ptr<T> value;
+  std::shared_ptr<T> value;
   bool was_set{false};
 
  public:
-  Result() = default;
+  Result() { value = nullptr; }
   Result(const T& value) {
-    this->value = std::make_unique<T>(value);
+    this->value = std::make_shared<T>(value);
     this->was_set = true;
   }
   bool HasValue() const { return was_set; }
-  T Value() const { return this->value.get(); }
+  T Value() const { return *this->value.get(); }
   void SetValue(const T& value) {
     this->value = value;
     this->was_set = true;
