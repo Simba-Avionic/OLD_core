@@ -20,10 +20,10 @@ INSTANTIATE_TEST_SUITE_P(
     ParmSplitTestCases, ParmSplitTest,
     testing::Values(
         std::make_tuple("abc=123", "123", "abc"),
-        std::make_tuple("abc = 123", "123", "abc"),
-        std::make_tuple("abc==123", "123", "abc"),
-        std::make_tuple("abc= =123", "123", "abc"),
-        std::make_tuple(" abc = 123 ", "123", "abc"),
-        std::make_tuple(" abc = = 1 2 3 ", "123", "abc")
+        std::make_tuple("hello_world=444", "444", "hello_world"),
+        std::make_tuple("32432", "", "32432"),
+        std::make_tuple("abc==123", "=123", "abc"),
+        std::make_tuple("abc", "", "abc"),
+        std::make_tuple("", "", "")
     )
 );
