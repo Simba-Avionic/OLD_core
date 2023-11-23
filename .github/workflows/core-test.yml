@@ -1,6 +1,7 @@
 name: Build and Test
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -18,11 +19,33 @@ jobs:
           wget https://github.com/bazelbuild/bazel/releases/download/6.4.0/bazel_6.4.0-linux-x86_64.deb
           sudo dpkg -i bazel_6.4.0-linux-x86_64.deb
           sudo apt-get update
-          sudo apt-get install -y bazel
+          sudo apt-get install -y bazel cpplint
           bazel version
+
+      - name: Build core
+        run: |
+          bazel build //:core
 
       - name: Build and Run Tests
         run: |
-          bazel build //...
+          bazel build //test:core_test
           cd test
           bazel test //test:core_test
+
+      - name: Check C++ Syntax
+        run: |
+          cpp_files=$(find . -name "*.cc" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp")
+          total_errors=0
+          for file in $cpp_files; do
+            errors=$(cpplint --filter=-build/include_subdir --extensions=cc,cpp,h,hpp --linelength=120 --recursive --repository=. --root=src $file | wc -l)
+            total_errors=$((total_errors + errors))
+          done
+          
+          if [[ $total_errors -gt 10 ]]; then
+            echo "Too many errors ($total_errors), failing the build."
+            exit 1
+          else
+            echo "Acceptable number of errors ($total_errors)."
+          fi
+  
+  
