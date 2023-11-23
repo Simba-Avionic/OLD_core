@@ -1,0 +1,28 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Bazel
+        run: |
+          wget https://github.com/bazelbuild/bazel/releases/download/6.4.0/bazel_6.4.0-linux-x86_64.deb
+          sudo dpkg -i bazel_6.4.0-linux-x86_64.deb
+          sudo apt-get update
+          sudo apt-get install -y bazel
+          bazel version
+
+      - name: Build and Run Tests
+        run: |
+          bazel build //...
+          cd test
+          bazel test //test:core_test
