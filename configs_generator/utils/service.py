@@ -8,6 +8,7 @@ from utils.base_class import BaseClass
 # and provides methods to retrieve service information by name, ID, method name, and interface name.
 class Service(BaseClass):
     def __init__(self,filepath:str):
+        super().__init__()
         self.data=self.load_data(filepath)
         self.data=self.data["services"]
 
