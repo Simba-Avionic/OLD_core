@@ -14,6 +14,6 @@ class BaseClass:
                 self.data = json.load(file)
                 self.data_loaded = True
                 logging.info("Class initialized successfully")
+                return True
         except FileNotFoundError:
-            logging.fatal(f"File in path: {file_path} does not exist")
-            exit(1)
+            return False

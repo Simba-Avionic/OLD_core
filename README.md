@@ -1,1 +1,3 @@
 # communication-core
+
+# NIE ZMIENIAJ ZAWARTOSCI TEST_RESOURCE

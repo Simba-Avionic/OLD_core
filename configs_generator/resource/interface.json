@@ -3,31 +3,26 @@
       {
         "name": "app1",
         "ip": "192.168.1.1",
-        "ipc": "testowy.socket2",
         "port": 1000
       },
       {
         "name": "app2",
-        "ip": "192.168.1.1",
-        "ipc": "testowy.socket2",
-        "port": 1001
+        "ip": "testowy.socket2",
+        "port": 0
       },
       {
         "name": "app3",
         "ip": "192.168.1.3",
-        "ipc": "testowy.socket2",
         "port": 1003
       },
       {
         "name": "rut1",
         "ip": "192.168.1.3",
-        "ipc": "rut2",
-        "port": 1003
+        "port": 1005
       },
       {
         "name": "rut2",
         "ip": "192.168.1.3",
-        "ipc": "testowy.rut2",
         "port": 1003
       }
     ] 

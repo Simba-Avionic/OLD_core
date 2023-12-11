@@ -4,17 +4,30 @@
         "name": "app1",
         "service_id": 100,
         "interface": "app2",
-        "methods": [
+        "pub_methods": [
           {
             "method_id": 1,
             "name": "getcos"
           }
         ],
-  
-        "req_services":[
+        "pub_events":[
+          {
+            "event_id":6652,
+            "name":"temp"
+          },
+          {
+            "event_id":2,
+            "name":"pressure"
+          }
+        ],  
+        "req_methods":[
           "app2/getcos",
           "app2/getcos2",
           "app3/getcos"
+        ],
+        "req_events":[
+          "app2/temp",
+          "app3/pressure"
         ],
         "conf":{
           "someconf":"val",
@@ -25,6 +38,14 @@
         "name": "app2",
         "service_id": 101,
         "interface": "app2",
+
+        "events":[
+          {
+            "event_id":66652,
+            "name":"temp"
+          }
+        ], 
+
         "methods": [
           {
             "method_id": 1,
@@ -40,6 +61,14 @@
         "name": "app3",
         "service_id": 102,
         "interface": "app3",
+
+        "events":[
+          {
+            "event_id":2,
+            "name":"pressure"
+          }
+        ], 
+
         "methods": [
           {
             "method_id": 1,
