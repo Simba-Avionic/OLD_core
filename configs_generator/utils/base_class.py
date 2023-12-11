@@ -11,9 +11,7 @@ class BaseClass:
         logging.info("load data from file")
         try:
             with open(file_path, "r",encoding="UTF-8") as file:
-                self.data = json.load(file)
-                self.data_loaded = True
                 logging.info("Class initialized successfully")
-                return True
+                return json.load(file)
         except FileNotFoundError:
-            return False
+            logging.warning("Failed initialize class")

@@ -6,7 +6,7 @@
         "port": 0
     },
 
-    "methods": [ 
+    "pub_methods": [ 
         {
             "method_id": 1,
             "name": "getcos"

@@ -9,7 +9,7 @@ from utils.base_class import BaseClass
 # present in the same router.
 class Router(BaseClass):
     def __init__(self,filepath:str):
-        self.load_data(filepath)
+        self.data=self.load_data(filepath)
         self.data=self.data["routers"]
         if not SimBaConfigsValidator().validate_routers(filepath):
             logging.warning("Invalid Router Schema")

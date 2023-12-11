@@ -11,7 +11,7 @@ class Interface(BaseClass):
     schema, and provides a method to retrieve interface information by name.
     """
     def __init__(self,filepath:str):
-        self.load_data(filepath)
+        self.data=self.load_data(filepath)
         self.data=self.data["interfaces"]
         if not SimBaConfigsValidator().validate_interface(filepath):
             logging.warning("Invalid Interface Schema")

@@ -7,7 +7,7 @@ from utils.end_file_generator import EndFileGenerator
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.WARNING)
 
     parser=argparse.ArgumentParser(description="Config file generator for SOME/IP v1")
 

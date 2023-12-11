@@ -31,7 +31,7 @@ class EndFileGenerator:
             remote_service=self.service.get_by_name(service_name)
             event_id=self.service.get_event_id(service_name,event_name)
             if event_id is not None:
-                out.append({"name":name,"event_id":event_id,"service_id":remote_service["service_id"]})
+                out.append({"name":name,"service_id":remote_service["service_id"],"event_id":event_id})
             else:
                 logging.critical("event not found")
                 exit(1)
@@ -40,9 +40,18 @@ class EndFileGenerator:
 
 
     def _generate_pub_events(self,pub_events:list):
+        out={}
         for event in pub_events:
             string_name=self.service_name+'/'+event["name"]
-            self.service.get_subscribers(string_name)
+            services_name=self.service.get_subscribers_by_event_name(string_name)
+            sub_services=[]
+            for s in services_name:
+                sub_services.append(self.service.get_by_name(s))
+            out[string_name]={
+                "event_id":event.get("event_id"),
+                "subscribers":[{"service_id":service.get("service_id"),"interface":self.interface.get_by_interface_name(service.get("interface"))} for service in sub_services]
+            }
+        return out
 
 
     def _generate_db(self,req_services:list)-> dict | None:
@@ -88,7 +97,7 @@ class EndFileGenerator:
         work_service = self.service.get_by_name(self.service_name)
 
         if work_service is None:
-            print(f"Service with name {self.service_name} does not exist")
+            logging.warning(f"Service with name {self.service_name} does not exist")
             return out_dict
 
         interface_name = work_service.get("interface",None)
@@ -99,7 +108,8 @@ class EndFileGenerator:
 
         out_dict["req_events"]=self._generate_req_events(work_service.get("req_events",[]))
 
-        self._generate_pub_events(self.service.get_by_name(self.service_name).get("pub_events",[]))
+        out_dict["pub_events"]=self._generate_pub_events(self.service.get_by_name(self.service_name).get("pub_events",[]))
+        out_dict["pub_methods"]=self.service.get_by_id(out_dict["service_id"]).get("pub_methods",[])
 
         req_services = work_service.get("req_methods", [])
         out_dict["db"] = self._generate_db(req_services)
