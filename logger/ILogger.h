@@ -8,9 +8,10 @@
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef CORE_LOGGER_ILOGGER_H_
-#define CORE_LOGGER_ILOGGER_H_
+#ifndef LOGGER_ILOGGER_H_
+#define LOGGER_ILOGGER_H_
 #include "common/error_code.h"
+#include <string>
 namespace simba {
 namespace core {
 namespace logger {
@@ -25,4 +26,4 @@ class ILogger {
 }  // namespace logger
 }  // namespace core
 }  // namespace simba
-#endif  // CORE_LOGGER_ILOGGER_H_
+#endif  // LOGGER_ILOGGER_H_
