@@ -26,7 +26,7 @@ class IApplication {
    * @param parms map with parms
    */
   virtual void Run(const std::unordered_map<std::string, Parm>& parms) = 0;
-  virtual void Stop(){};
+  virtual void Stop(){}
   /**
    * @brief This is pre-run function only for creting new application
    * interfacess

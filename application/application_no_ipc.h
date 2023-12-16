@@ -12,6 +12,7 @@
 #define CORE_APPLICATION_APLICATION_NO_IPC_H_
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 #include "application/Iapplication.h"
 #include "logger/ILogger.h"

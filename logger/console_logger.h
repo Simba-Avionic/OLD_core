@@ -16,13 +16,14 @@
 namespace simba {
 namespace core {
 namespace logger {
+
 class ConsoleLogger : public ILogger {
  public:
   ConsoleLogger();
-  core::ErrorCode Debug(const std::string& log) override;
-  core::ErrorCode Info(const std::string& log) override;
-  core::ErrorCode Warning(const std::string& log) override;
-  core::ErrorCode Error(const std::string& log) override;
+  void Debug(const std::string& log) override;
+  void Info(const std::string& log) override;
+  void Warning(const std::string& log) override;
+  void Error(const std::string& log) override;
 };
 }  // namespace logger
 }  // namespace core

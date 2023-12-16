@@ -21,21 +21,21 @@ namespace logger {
   ConsoleLogger::ConsoleLogger() {
     spdlog::set_level(spdlog::level::debug);
   }
-core::ErrorCode ConsoleLogger::Debug(const std::string& log) {
+void ConsoleLogger::Debug(const std::string& log) {
   spdlog::debug(log);
-  return core::ErrorCode::kOk;
+  return void::kOk;
 }
-core::ErrorCode ConsoleLogger::Info(const std::string& log) {
+void ConsoleLogger::Info(const std::string& log) {
   spdlog::info(log);
-  return core::ErrorCode::kOk;
+  return void::kOk;
 }
-core::ErrorCode ConsoleLogger::Warning(const std::string& log) {
+void ConsoleLogger::Warning(const std::string& log) {
   spdlog::warn(log);
-  return core::ErrorCode::kOk;
+  return void::kOk;
 }
-core::ErrorCode ConsoleLogger::Error(const std::string& log) {
+void ConsoleLogger::Error(const std::string& log) {
   spdlog::error(log);
-  return core::ErrorCode::kOk;
+  return void::kOk;
 }
 }  // namespace logger
 }  // namespace core
