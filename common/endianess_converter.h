@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef CORE_COMMON_ENDIANESS_CONVERTER_H_
-#define CORE_COMMON_ENDIANESS_CONVERTER_H_
+#ifndef COMMON_ENDIANESS_CONVERTER_H_ 
+#define COMMON_ENDIANESS_CONVERTER_H_ 
 #include <algorithm>
 #include <array>
 #include <cstdint>
@@ -34,4 +34,4 @@ class EndianessConverter {
 }  // namespace converter
 }  // namespace core
 }  // namespace simba
-#endif  // CORE_CODE_ENDIANESS_CONVERTER_H_
+#endif  // COMMON_ENDIANESS_CONVERTER_H_ 
