@@ -1,4 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
     name = "core",
@@ -8,5 +8,6 @@ cc_library(
         "@core//common:common_converter",
         "@core//common:common_types",
         "@core//logger:console_logger",
+        "@core//results:results_lib",
     ],
 )

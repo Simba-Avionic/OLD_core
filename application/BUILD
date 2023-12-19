@@ -7,5 +7,8 @@ cc_library(
         "parm.h",
     ],
     visibility = ["@core//:__subpackages__"],
-    deps = ["@core//logger:console_logger"],
+    deps = [
+        "@com_json//:json",
+        "@core//logger:console_logger",
+    ],
 )

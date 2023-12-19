@@ -28,8 +28,8 @@ class Parm {
       name = raw;
     }
   }
-  const std::string GetValue() { return value; }
-  const std::string GetName() { return name; }
+  const std::string GetValue() const { return value; }
+  const std::string GetName() const { return name; }
   ~Parm() = default;
 };
 }  // namespace core
