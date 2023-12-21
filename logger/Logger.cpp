@@ -14,27 +14,50 @@
 namespace simba {
 namespace core {
 namespace logger {
-Logger::Logger(ConsoleLogger_& instance,const std::string& appName,loggingLevel lvl):instance(instance),appName(appName),level(lvl) {
+std::string  Logger::appName = "NONE";
+loggingLevel Logger::level = loggingLevel::WARNING;
+std::vector<std::shared_ptr<ILogger>> Logger::loggers = {};
+
+
+void Logger::SetParms(const std::string& appName,loggingLevel lvl) {
+  Logger::appName = appName;
+  Logger::level = lvl;
 }
 void Logger::Debug(const std::string& log, const std::source_location& location) {
-    if (level == DEBUG){
-    this->instance.Debug("["+this->appName+"]"+log,location);
+    if (Logger::level == DEBUG){
+    for( auto logger : Logger::loggers)
+    {
+        logger->Debug(log, location);
+    }
     }
 }
 void Logger::Info(const std::string& log, const std::source_location& location) {
     if (level == DEBUG || level == INFO) {
-    this->instance.Info("["+this->appName+"]"+log,location);
+    for( auto logger : Logger::loggers)
+    {
+        logger->Info(log, location);
+    }
     }
 }
 void Logger::Warning(const std::string& log, const std::source_location& location) {
     if (level == DEBUG || level == INFO || level == WARNING) {
-    this->instance.Warning("["+this->appName+"]"+log,location);
+        for( auto logger : this->loggers)
+    {
+        logger->Warning(log, location);
+    }
     }
 }
 void Logger::Error(const std::string& log, const std::source_location& location) {
     if (level == DEBUG || level == INFO || level == WARNING || level == ERROR) {
-    this->instance.Error("["+this->appName+"]"+log,location);
+    for( auto logger : this->loggers)
+    {
+        logger->Error(log, location);
     }
+    }
+}
+
+void Logger::AddLogger(std::shared_ptr<ILogger> logger){
+    this->loggers.push_back(logger);
 }
 
 } // logger

@@ -17,6 +17,7 @@
 #include "application/Iapplication.h"
 #include "logger/ILogger.h"
 #include "logger/console_logger.h"
+#include "logger/Logger.h"
 namespace simba {
 namespace core {
 class ApplicationNoIPC : public IApplication {
@@ -27,10 +28,11 @@ class ApplicationNoIPC : public IApplication {
   }
 
   void onRun(const std::unordered_map<std::string, Parm>& parms) override {
-    this->logger_ = std::make_shared<logger::ConsoleLogger>();
-    logger_->Info("Application started");
+    AppLogger::SetParms("NONE", logger::loggingLevel::DEBUG);
+    AppLogger::AddLogger(std::make_shared<logger::ConsoleLogger>());
+    AppLogger::Info("Application started");
     this->Run(parms);
-    logger_->Info("Application stopped");
+    AppLogger::Info("Application stopped");
   }
 
  public:
