@@ -10,8 +10,8 @@
  */
 #ifndef LOGGER_CONSOLE_LOGGER_H_
 #define LOGGER_CONSOLE_LOGGER_H_
-#include "common/error_code.h"
-#include "logger/ILogger.h"
+#include "core/common/error_code.h"
+#include "core/logger/ILogger.h"
 #include <string>
 namespace simba {
 namespace core {

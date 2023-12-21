@@ -10,7 +10,7 @@
  */
 #include <string>
 
-#include "logger/console_logger.h"
+#include "core/logger/console_logger.h"
 
 #include "spdlog/spdlog.h"
 

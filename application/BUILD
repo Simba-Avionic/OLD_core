@@ -6,9 +6,9 @@ cc_library(
         "application_no_ipc.h",
         "parm.h",
     ],
-    visibility = ["@core//:__subpackages__"],
+    visibility = ["//core:__subpackages__"],
     deps = [
         "@com_json//:json",
-        "@core//logger:console_logger",
+        "//core/logger:console_logger",
     ],
 )

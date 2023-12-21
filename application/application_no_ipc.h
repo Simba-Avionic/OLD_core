@@ -13,10 +13,11 @@
 #include <memory>
 #include <nlohmann/json.hpp>
 #include <string>
+#include <fstream>
 
-#include "application/Iapplication.h"
-#include "logger/ILogger.h"
-#include "logger/console_logger.h"
+#include "core/application/Iapplication.h"
+#include "core/logger/ILogger.h"
+#include "core/logger/console_logger.h"
 
 namespace simba {
 namespace core {
