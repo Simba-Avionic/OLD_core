@@ -14,27 +14,31 @@
 #include "common/error_code.h"
 #include "logger/ILogger.h"
 #include "logger/_console_logger.hpp"
+#include <memory>
+#include <vector>
 
 namespace simba {
 namespace core {
 namespace logger {
 
-class Logger:public ILogger{
+class Logger{
  public:
-  Logger(ConsoleLogger_& instance,const std::string& appName,loggingLevel lvl = WARNING);
-  void Debug(const std::string& log, const std::source_location& location = std::source_location::current()) override;
-  void Info(const std::string& log, const std::source_location& location = std::source_location::current()) override;
-  void Warning(const std::string& log, const std::source_location& location = std::source_location::current()) override;
-  void Error(const std::string& log, const std::source_location& location = std::source_location::current()) override;
+  static void Debug(const std::string& log, const std::source_location& location = std::source_location::current());
+  static void Info(const std::string& log, const std::source_location& location = std::source_location::current());
+  static void Warning(const std::string& log, const std::source_location& location = std::source_location::current());
+  static void Error(const std::string& log, const std::source_location& location = std::source_location::current());
+  static void SetParms(const std::string& appName,loggingLevel lvl = WARNING);
+  static void AddLogger(std::shared_ptr<ILogger> logger);
  private:
- ConsoleLogger_& instance;
- std::string appName;
- loggingLevel level;
-
+    static std::string appName;
+    static loggingLevel level;
+    static std::vector<std::shared_ptr<ILogger>> loggers;
 };
 
 } // logger
 } // core
 } // simba
+
+using AppLogger = simba::core::logger::Logger;
 
 #endif // LOGGER_HPP_

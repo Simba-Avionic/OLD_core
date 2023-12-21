@@ -32,21 +32,11 @@ class ApplicationNoIPC : public IApplication {
   }
 
   void onRun(const std::unordered_map<std::string, Parm>& parms) override {
-    this->logger_ = std::make_shared<logger::ConsoleLogger>();
-    const auto config = parms.find("config_path");
-    if (config != parms.cend()) {
-      std::ifstream f(config->second.GetValue());
-      if (f.is_open()) {
-        data = nlohmann::json::parse(f);
-      } else {
-        logger_->Error("File on path: " + config->second.GetValue() +
-                       " not exist!!");
-      }
-    }
-
-    logger_->Info("Application started");
+    AppLogger::SetParms("NONE", logger::loggingLevel::DEBUG);
+    AppLogger::AddLogger(std::make_shared<logger::ConsoleLogger>());
+    AppLogger::Info("Application started");
     this->Run(parms);
-    logger_->Info("Application stopped");
+    AppLogger::Info("Application stopped");
   }
 
  public:
