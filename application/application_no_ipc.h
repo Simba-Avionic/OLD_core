@@ -13,6 +13,7 @@
 #include <memory>
 #include <nlohmann/json.hpp>
 #include <string>
+#include <unordered_map>
 
 #include "application/Iapplication.h"
 #include "logger/ILogger.h"
