@@ -8,11 +8,12 @@
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef LOGGER_CONSOLE_LOGGER_H_
-#define LOGGER_CONSOLE_LOGGER_H_
+#ifndef CORE_LOGGER_CONSOLE_LOGGER_H_
+#define CORE_LOGGER_CONSOLE_LOGGER_H_
+#include <string>
+
 #include "core/common/error_code.h"
 #include "core/logger/ILogger.h"
-#include <string>
 namespace simba {
 namespace core {
 namespace logger {
@@ -20,12 +21,12 @@ namespace logger {
 class ConsoleLogger : public ILogger {
  public:
   ConsoleLogger();
-  void Debug(const std::string& log) override;
-  void Info(const std::string& log) override;
-  void Warning(const std::string& log) override;
-  void Error(const std::string& log) override;
+  simba::core::ErrorCode Debug(const std::string& log) override;
+  simba::core::ErrorCode Info(const std::string& log) override;
+  simba::core::ErrorCode Warning(const std::string& log) override;
+  simba::core::ErrorCode Error(const std::string& log) override;
 };
 }  // namespace logger
 }  // namespace core
 }  // namespace simba
-#endif  // LOGGER_CONSOLE_LOGGER_H_
+#endif  // CORE_LOGGER_CONSOLE_LOGGER_H_

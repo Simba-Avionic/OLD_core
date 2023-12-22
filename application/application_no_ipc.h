@@ -8,26 +8,25 @@
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef CORE_APPLICATION_APLICATION_NO_IPC_H_
-#define CORE_APPLICATION_APLICATION_NO_IPC_H_
+#ifndef CORE_APPLICATION_APPLICATION_NO_IPC_H_
+#define CORE_APPLICATION_APPLICATION_NO_IPC_H_
+#include <fstream>
 #include <memory>
-#include <nlohmann/json.hpp>
 #include <string>
 #include <unordered_map>
-#include <fstream>
 
 #include "core/application/Iapplication.h"
 #include "core/logger/ILogger.h"
+#include "core/logger/Logger.h"
 #include "core/logger/console_logger.h"
-
+#include "nlohmann/json.hpp"
 namespace simba {
 namespace core {
 class ApplicationNoIPC : public IApplication {
  protected:
   std::shared_ptr<logger::ILogger> logger_;
   nlohmann::json data{};
-  virtual void Run(
-      const std::unordered_map<std::string, Parm>& parms) override {
+  void Run(const std::unordered_map<std::string, Parm>& parms) override {
     logger_->Error("Application function: Run is not implemented: ");
   }
 
@@ -44,4 +43,4 @@ class ApplicationNoIPC : public IApplication {
 };
 }  // namespace core
 }  // namespace simba
-#endif  // CORE_APPLICATION_APLICATION_NO_IPC_H_
+#endif  // CORE_APPLICATION_APPLICATION_NO_IPC_H_

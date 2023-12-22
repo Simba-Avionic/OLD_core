@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2023
  * 
  */
-#ifndef GPIO_GPIO_DIGITAL_DRIVER_H_
-#define GPIO_GPIO_DIGITAL_DRIVER_H_
+#ifndef CORE_GPIO_GPIO_DIGITAL_DRIVER_H_
+#define CORE_GPIO_GPIO_DIGITAL_DRIVER_H_
 
 #include <stdint.h>
 #include <string>
@@ -39,4 +39,4 @@ class GpioDigitalDriver:IgpioDigitalDriver{
 }  // namespace core
 }  // namespace simba
 
-#endif  // GPIO_GPIO_DIGITAL_DRIVER_H_
+#endif  // CORE_GPIO_GPIO_DIGITAL_DRIVER_H_

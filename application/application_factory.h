@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef CORE_APPLICATION_APLICATION_FACTORY_H_
-#define CORE_APPLICATION_APLICATION_FACTORY_H_
+#ifndef CORE_APPLICATION_APPLICATION_FACTORY_H_
+#define CORE_APPLICATION_APPLICATION_FACTORY_H_
 #include <signal.h>
 #include <unistd.h>
 
@@ -17,12 +17,12 @@
 #include <iostream>
 #include <memory>
 
-#include "application/Iapplication.h"
+#include "core/application/Iapplication.h"
 namespace simba {
 namespace core {
-namespace {
-static std::unique_ptr<IApplication> app{nullptr};
-}
+namespace {   // NOLINT
+static std::unique_ptr<IApplication> app{nullptr};  // NOLINT
+}   // NOLINT
 void signal_callback_handler(int signum) {
   if (app != nullptr) {
     app->StopApp();
@@ -44,4 +44,4 @@ class ApplicationFactory {
 
 }  // namespace core
 }  // namespace simba
-#endif  // CORE_APPLICATION_APLICATION_NO_IPC_H_
+#endif  // CORE_APPLICATION_APPLICATION_FACTORY_H_

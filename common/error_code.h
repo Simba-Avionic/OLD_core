@@ -8,8 +8,9 @@
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef CORE_COMMON_EERROR_CODE_H_
-#define CORE_COMMON_EERROR_CODE_H_
+#ifndef CORE_COMMON_ERROR_CODE_H_
+#define CORE_COMMON_ERROR_CODE_H_
+
 #include <stdexcept>
 #include <string>
 namespace simba {
