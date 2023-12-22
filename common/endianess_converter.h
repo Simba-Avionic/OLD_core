@@ -34,4 +34,4 @@ class EndianessConverter {
 }  // namespace converter
 }  // namespace core
 }  // namespace simba
-#endif  // CORE_CODE_ENDIANESS_CONVERTER_H_
+#endif  // CORE_COMMON_ENDIANESS_CONVERTER_H_

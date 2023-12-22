@@ -20,7 +20,7 @@ class Parm {
   std::string value{""};
 
  public:
-  Parm(const std::string raw) {
+  explicit Parm(const std::string raw) {
     if (raw.find("=") != std::string::npos) {
       name = raw.substr(0, raw.find("="));
       value = raw.substr(raw.find("=")+1);

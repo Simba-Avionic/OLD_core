@@ -8,34 +8,32 @@
  * @copyright Copyright (c) 2023
  *
  */
-#include <string>
-
 #include "core/logger/console_logger.h"
 
-#include "spdlog/spdlog.h"
+#include <source_location>
+#include <string>
 
+#include "spdlog/spdlog.h"
 
 namespace simba {
 namespace core {
 namespace logger {
-  ConsoleLogger::ConsoleLogger() {
-    spdlog::set_level(spdlog::level::debug);
-  }
-core::ErrorCode ConsoleLogger::Debug(const std::string& log) {
+ConsoleLogger::ConsoleLogger() { spdlog::set_level(spdlog::level::debug); }
+simba::core::ErrorCode ConsoleLogger::Debug(const std::string& log) {
   spdlog::debug(log);
-  return core::ErrorCode::kOk;
+  return simba::core::ErrorCode::kOk;
 }
-core::ErrorCode ConsoleLogger::Info(const std::string& log) {
+simba::core::ErrorCode ConsoleLogger::Info(const std::string& log) {
   spdlog::info(log);
-  return core::ErrorCode::kOk;
+  return simba::core::ErrorCode::kOk;
 }
-core::ErrorCode ConsoleLogger::Warning(const std::string& log) {
+simba::core::ErrorCode ConsoleLogger::Warning(const std::string& log) {
   spdlog::warn(log);
-  return core::ErrorCode::kOk;
+  return simba::core::ErrorCode::kOk;
 }
-core::ErrorCode ConsoleLogger::Error(const std::string& log) {
+simba::core::ErrorCode ConsoleLogger::Error(const std::string& log) {
   spdlog::error(log);
-  return core::ErrorCode::kOk;
+  return simba::core::ErrorCode::kOk;
 }
 }  // namespace logger
 }  // namespace core

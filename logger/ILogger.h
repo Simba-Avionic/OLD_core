@@ -8,22 +8,26 @@
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef LOGGER_ILOGGER_H_
-#define LOGGER_ILOGGER_H_
-#include "core/common/error_code.h"
+#ifndef CORE_LOGGER_ILOGGER_H_
+#define CORE_LOGGER_ILOGGER_H_
+#include <source_location>
 #include <string>
+
+#include "core/common/error_code.h"
 namespace simba {
 namespace core {
 namespace logger {
+
+enum loggingLevel { DEBUG, INFO, WARNING, ERROR, OFF };
+
 class ILogger {
  public:
-  virtual core::ErrorCode Debug(const std::string& log) = 0;
-  virtual core::ErrorCode Info(const std::string& log) = 0;
-  virtual core::ErrorCode Warning(const std::string& log) = 0;
-  virtual core::ErrorCode Error(const std::string& log) = 0;
-  virtual ~ILogger() = default;
+  virtual simba::core::ErrorCode Debug(const std::string& log) = 0;
+  virtual simba::core::ErrorCode Info(const std::string& log) = 0;
+  virtual simba::core::ErrorCode Warning(const std::string& log) = 0;
+  virtual simba::core::ErrorCode Error(const std::string& log) = 0;
 };
 }  // namespace logger
 }  // namespace core
 }  // namespace simba
-#endif  // LOGGER_ILOGGER_H_
+#endif  // CORE_LOGGER_ILOGGER_H_

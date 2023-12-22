@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef GPIO_IGPIO_DIGITAL_DRIVER_H_
-#define GPIO_IGPIO_DIGITAL_DRIVER_H_
+#ifndef CORE_GPIO_IGPIO_DIGITAL_DRIVER_H_
+#define CORE_GPIO_IGPIO_DIGITAL_DRIVER_H_
 
 #include <stdint.h>
 
@@ -74,4 +74,4 @@ class IgpioDigitalDriver{
 }  // namespace core
 }  // namespace simba
 
-#endif  // GPIO_IGPIO_DRIVER_H_
+#endif  // CORE_GPIO_IGPIO_DIGITAL_DRIVER_H_

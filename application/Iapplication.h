@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef CORE_APPLICATION_IAPLICATION_H_
-#define CORE_APPLICATION_IAPLICATION_H_
+#ifndef CORE_APPLICATION_IAPPLICATION_H_
+#define CORE_APPLICATION_IAPPLICATION_H_
 #include <chrono>
 #include <string>
 #include <thread>
@@ -26,7 +26,7 @@ class IApplication {
    * @param parms map with parms
    */
   virtual void Run(const std::unordered_map<std::string, Parm>& parms) = 0;
-  virtual void Stop(){};
+  virtual void Stop() {}
   /**
    * @brief This is pre-run function only for creting new application
    * interfacess
@@ -60,4 +60,4 @@ class IApplication {
 };
 }  // namespace core
 }  // namespace simba
-#endif  // CORE_APPLICATION_IAPLICATION_H_
+#endif  // CORE_APPLICATION_IAPPLICATION_H_

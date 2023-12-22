@@ -24,7 +24,7 @@ class Result {
 
  public:
   Result() { value = nullptr; }
-  Result(const T& value) {
+  explicit Result(const T& value) {
     this->value = std::make_shared<T>(value);
     this->was_set = true;
   }
