@@ -27,7 +27,7 @@ class ApplicationNoIPC : public IApplication {
   std::shared_ptr<logger::ILogger> logger_;
   nlohmann::json data{};
   void Run(const std::unordered_map<std::string, Parm>& parms) override {
-    logger_->Error("Application function: Run is not implemented: ");
+    AppLogger::Error("Application function: Run is not implemented:");
   }
 
   void onRun(const std::unordered_map<std::string, Parm>& parms) override {
