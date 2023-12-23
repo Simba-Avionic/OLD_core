@@ -25,7 +25,7 @@ void Logger::SetParms(const std::string& appName, loggingLevel lvl) {
 }
 void Logger::Debug(const std::string& log,
                    const std::source_location& location) {
-  if (Logger::level == DEBUG) {
+  if (Logger::level <= DEBUG) {
     for (auto logger : Logger::loggers) {
       logger->Debug(Logger::GetLogMsg(log, location));
     }
@@ -33,7 +33,7 @@ void Logger::Debug(const std::string& log,
 }
 void Logger::Info(const std::string& log,
                   const std::source_location& location) {
-  if (level == DEBUG || level == INFO) {
+  if (Logger::level <= INFO) {
     for (auto logger : Logger::loggers) {
       logger->Info(Logger::GetLogMsg(log, location));
     }
@@ -41,7 +41,7 @@ void Logger::Info(const std::string& log,
 }
 void Logger::Warning(const std::string& log,
                      const std::source_location& location) {
-  if (level == DEBUG || level == INFO || level == WARNING) {
+  if (Logger::level <= WARNING) {
     for (auto logger : loggers) {
       logger->Warning(Logger::GetLogMsg(log, location));
     }
@@ -49,7 +49,7 @@ void Logger::Warning(const std::string& log,
 }
 void Logger::Error(const std::string& log,
                    const std::source_location& location) {
-  if (level == DEBUG || level == INFO || level == WARNING || level == ERROR) {
+  if (Logger::level <= ERROR) {
     for (auto logger : loggers) {
       logger->Error(Logger::GetLogMsg(log, location));
     }
